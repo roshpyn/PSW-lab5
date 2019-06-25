@@ -40,4 +40,22 @@ public class User {
     @NonNull
     @Column(name = "permission")
     private String permission;
+    public User(String login, String password, String email, String name, String surname, String permission){
+        setLogin(login);
+        setPassword(password);
+        setEmail(email);
+        setName(name);
+        setSurname(surname);
+        setPermission(permission);
+    }
+    public  User(String nope){
+        String bu = "-brak-użytkownika-"+nope+"-";
+        setId(0L);
+        setPermission(bu);
+        setSurname(bu);
+        setName(bu);
+        setEmail(bu);
+        setPassword(bu);
+        setLogin(bu);
+    }
 }

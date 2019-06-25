@@ -2,14 +2,16 @@ package main.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table
+@Table(name = "uoe")
 public class UserOnEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

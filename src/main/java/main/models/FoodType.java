@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "foodtypes")
+@Table(name = "ft")
 public class FoodType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,8 @@ public class FoodType {
     @NonNull
     private String name;
 
+    public FoodType(String nope){
+        setId(1L);
+        setName("Bez preferencji");
+    }
 }

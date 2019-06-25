@@ -15,7 +15,7 @@ public interface DAO {
     boolean addUser(User user);
     boolean modifyUser(Long userId, User newUserData);
     boolean deleteUser(Long userId);
-    User getUser(Long UserId);
+    User getUser(Long userId);
     boolean resetPassword(Long userId,String newPassword);
 
 
