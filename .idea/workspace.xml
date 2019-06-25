@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="0.75 - DAO nearly implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/DAO/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/DAO/DatabaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/DAO/DatabaseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/models/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/models/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/models/FoodType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/models/FoodType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/models/UserOnEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/models/UserOnEvent.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,29 +97,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/DAO/DatabaseDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="282" column="38" selection-start-line="282" selection-start-column="38" selection-end-line="282" selection-end-column="38" />
+            <state relative-caret-position="-919">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#MySqlConnection#0;class#DatabaseDAO#0" />
-                <element signature="method#addUser#0;class#DatabaseDAO#0" />
-                <element signature="method#modifyUser#0;class#DatabaseDAO#0" />
-                <element signature="method#deleteUser#0;class#DatabaseDAO#0" />
-                <element signature="method#getUser#0;class#DatabaseDAO#0" />
-                <element signature="method#resetPassword#0;class#DatabaseDAO#0" />
-                <element signature="method#addEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#modifyEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#deleteEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#getEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#addUserOnEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#modifyUserOnEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#deleteUserOnEvent#0;class#DatabaseDAO#0" />
-                <element signature="method#accept#0;class#DatabaseDAO#0" />
-                <element signature="method#discard#0;class#DatabaseDAO#0" />
-                <element signature="e#10378#10379#0" expanded="true" />
-                <element signature="e#10463#10464#0" expanded="true" />
-                <element signature="e#10540#10541#0" expanded="true" />
-                <element signature="e#10636#10637#0" expanded="true" />
+                <element signature="e#9772#9773#0" expanded="true" />
+                <element signature="e#9857#9858#0" expanded="true" />
+                <element signature="e#9934#9935#0" expanded="true" />
+                <element signature="e#10030#10031#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,6 +156,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>user_btn</find>
+      <find>priva</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -330,7 +311,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561484516096" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561484910083" />
     <property name="dynamic.classpath" value="false" />
     <property name="last.edited.regexp" value="') DROP TABLE *;" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/PSW/PSW-master/LAB 05 15.04.2019" />
@@ -449,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561477827477</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="0.75 - DAO nearly implemented">
+      <created>1561484538419</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1561484538419</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -796,29 +784,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/DAO/DatabaseDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="282" column="38" selection-start-line="282" selection-start-column="38" selection-end-line="282" selection-end-column="38" />
+        <state relative-caret-position="-919">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#MySqlConnection#0;class#DatabaseDAO#0" />
-            <element signature="method#addUser#0;class#DatabaseDAO#0" />
-            <element signature="method#modifyUser#0;class#DatabaseDAO#0" />
-            <element signature="method#deleteUser#0;class#DatabaseDAO#0" />
-            <element signature="method#getUser#0;class#DatabaseDAO#0" />
-            <element signature="method#resetPassword#0;class#DatabaseDAO#0" />
-            <element signature="method#addEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#modifyEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#deleteEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#getEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#addUserOnEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#modifyUserOnEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#deleteUserOnEvent#0;class#DatabaseDAO#0" />
-            <element signature="method#accept#0;class#DatabaseDAO#0" />
-            <element signature="method#discard#0;class#DatabaseDAO#0" />
-            <element signature="e#10378#10379#0" expanded="true" />
-            <element signature="e#10463#10464#0" expanded="true" />
-            <element signature="e#10540#10541#0" expanded="true" />
-            <element signature="e#10636#10637#0" expanded="true" />
+            <element signature="e#9772#9773#0" expanded="true" />
+            <element signature="e#9857#9858#0" expanded="true" />
+            <element signature="e#9934#9935#0" expanded="true" />
+            <element signature="e#10030#10031#0" expanded="true" />
           </folding>
         </state>
       </provider>
