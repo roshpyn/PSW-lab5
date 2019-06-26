@@ -7,12 +7,11 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane maxHeight="720.0" maxWidth="1240.0" minHeight="720.0" minWidth="1240.0" prefHeight="720.0" prefWidth="1240.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.Controller">
+<TabPane maxHeight="720.0" maxWidth="1240.0" minHeight="720.0" minWidth="1240.0" prefHeight="720.0" prefWidth="1240.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.Controller">
   <tabs>
     <Tab fx:id="registerTab" text="Rejestracja">
          <content>
@@ -95,21 +94,16 @@
                      </rowConstraints>
                      <children>
                         <CheckBox mnemonicParsing="false" text="Pokaż hasło" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Button maxWidth="250.0" mnemonicParsing="false" text="Zaloguj" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="login_button" maxWidth="250.0" mnemonicParsing="false" onAction="#login" text="Zaloguj" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField layoutX="130.0" layoutY="140.0" GridPane.columnIndex="1" />
-                        <TextField layoutX="130.0" layoutY="140.0" GridPane.columnIndex="1" />
-                        <TextField layoutX="130.0" layoutY="70.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="login_login" layoutX="130.0" layoutY="140.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="login_password" layoutX="130.0" layoutY="70.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="53.0" maxWidth="120.0" prefHeight="17.0" prefWidth="135.0" text="Nazwa użytkownika: " />
                         <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="74.0" maxWidth="120.0" prefHeight="17.0" prefWidth="135.0" text="Hasło: " GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
             </GridPane>
-         </content>
-      </Tab>
-      <Tab fx:id="userTab" text="Widok Użytkownika">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
          </content>
       </Tab>
   </tabs>
