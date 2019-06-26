@@ -30,5 +30,8 @@ public class UserOnEvent {
     private FoodType foodType;
 
     @NonNull
+    private String role;
+
+    @NonNull
     private Boolean confirmed;
 }

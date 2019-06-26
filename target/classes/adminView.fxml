@@ -122,10 +122,10 @@
                         <TextField fx:id="textField_user_surname" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Button fx:id="button_user_resetPassword" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Reset hasła" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                  <Button fx:id="button_user_delete" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="313.0" text="Usuń" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Button fx:id="button_user_add" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="281.0" text="Dodaj" GridPane.rowIndex="3" />
-                  <Button fx:id="button_user_clear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="277.0" text="Wyczyść pola" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button fx:id="button_user_resetPassword" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#reset_user_btn" prefHeight="25.0" prefWidth="250.0" text="Reset hasła" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Button fx:id="button_user_delete" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#delete_user_btn" prefHeight="25.0" prefWidth="313.0" text="Usuń" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button fx:id="button_user_add" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#add_user_btn" prefHeight="25.0" prefWidth="281.0" text="Dodaj" GridPane.rowIndex="3" />
+                  <Button fx:id="button_user_clear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clear_user_btn" prefHeight="25.0" prefWidth="277.0" text="Wyczyść pola" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                   <GridPane layoutX="754.0" layoutY="491.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -139,7 +139,7 @@
                         <TextField fx:id="textField_user_permission" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Button fx:id="button_user_modify" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="654.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="281.0" text="Modyfikuj" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="button_user_modify" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="654.0" mnemonicParsing="false" onAction="#modify_user_btn" prefHeight="25.0" prefWidth="281.0" text="Modyfikuj" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </content>
@@ -175,10 +175,10 @@
                         <TableColumn fx:id="col_event_date" maxWidth="-1.0" minWidth="200.0" prefWidth="-1.0" resizable="false" text="Date" />
                      </columns>
                   </TableView>
-                  <Button fx:id="button_event_delete" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="313.0" text="Usuń" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-                  <Button fx:id="button_event_add" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="281.0" text="Dodaj" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                  <Button fx:id="button_event_clear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="277.0" text="Wyczyść pola" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                  <Button fx:id="button_event_modify" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="654.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="281.0" text="Modyfikuj" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                  <Button fx:id="button_event_delete" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#delete_event_btn" prefHeight="25.0" prefWidth="313.0" text="Usuń" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+                  <Button fx:id="button_event_add" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#add_event_btn" prefHeight="25.0" prefWidth="281.0" text="Dodaj" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <Button fx:id="button_event_clear" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clear_event_btn" prefHeight="25.0" prefWidth="277.0" text="Wyczyść pola" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                  <Button fx:id="button_event_modify" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="654.0" mnemonicParsing="false" onAction="#modify_event_btn" prefHeight="25.0" prefWidth="281.0" text="Modyfikuj" GridPane.columnIndex="4" GridPane.rowIndex="7" />
                   <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="272.0" text="Id: " GridPane.columnIndex="3" />
                   <TextField fx:id="textField_event_id" GridPane.columnIndex="4" />
                   <Label alignment="CENTER_RIGHT" layoutX="754.0" layoutY="37.0" prefHeight="17.0" prefWidth="272.0" text="Nazwa:" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -222,8 +222,8 @@
                         <TableColumn fx:id="col_userEvent_confirmed" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" text="Zatwierdzony" />
                      </columns>
                   </TableView>
-                  <Button fx:id="button_userEvent_accept" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Potwierdź" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Button fx:id="button_userEvent_discard" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Odrzuć" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Button fx:id="button_userEvent_accept" mnemonicParsing="false" onAction="#accept_userEvent_btn" prefHeight="25.0" prefWidth="150.0" text="Potwierdź" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button fx:id="button_userEvent_discard" mnemonicParsing="false" onAction="#discard_userEvent_btn" prefHeight="25.0" prefWidth="150.0" text="Odrzuć" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </content>

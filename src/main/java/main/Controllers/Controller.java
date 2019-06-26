@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.CheckBox;
+import main.DAO.DatabaseDAO;
 import main.models.User;
 
 import javax.security.auth.login.Configuration;
@@ -14,6 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Controller {
+    DatabaseDAO dao = new DatabaseDAO();
 
     User user  = new User();
     @FXML private TextField registerTextFieldName;
@@ -112,6 +114,10 @@ public class Controller {
         user.setEmail(email);
         user.setLogin(login);
         user.setPassword(password);
+        user.setPermission("USER");
+
+        dao.addUser(user);
+
 
 
 

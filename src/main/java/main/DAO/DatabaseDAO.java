@@ -7,6 +7,7 @@ import main.models.User;
 import main.models.UserOnEvent;
 
 import java.sql.*;
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
@@ -28,10 +29,18 @@ public class DatabaseDAO {
 
         return MySqlConn;
     }
-
+    public String sqlString(String stringToConvert){
+        return "'"+stringToConvert+"'";
+    }
     public boolean addUser(User user) {
-        String query = String.format("INSERT INTO users (login,password,email,name,surname,permission) VALUES({0},{1},{2},{3},{4},{5},{6})",
-                        user.getLogin(),user.getPassword(),user.getEmail(),user.getName(),user.getSurname(),user.getPermission()
+        String ap = "'";
+        String query = MessageFormat.format("INSERT INTO users (login,password,email,name,surname,permission) VALUES({0},{1},{2},{3},{4},{5})",
+                sqlString(user.getLogin()),
+                sqlString(user.getPassword()),
+                sqlString(user.getEmail()),
+                sqlString(user.getName()),
+                sqlString(user.getSurname()),
+                sqlString(user.getPermission())
         );
         try {
             return MySqlConnection().prepareStatement(query).execute();
@@ -43,13 +52,13 @@ public class DatabaseDAO {
     }
 
     public boolean modifyUser(Long userId, User newUserData) {
-        String query = String.format("UPDATE users SET login='{0}',password='{1}',email='{2}',name='{3}',surname='{4}',permission='{5}' WHERE id={6};",
-                newUserData.getLogin(),//0
-                newUserData.getPassword(),//1
-                newUserData.getEmail(),//2
-                newUserData.getName(),//3
-                newUserData.getSurname(),//4
-                newUserData.getPermission(),//5
+        String query = MessageFormat.format("UPDATE users SET login={0},password={1},email='2},name={3},surname={4},permission={5} WHERE id={6};",
+                sqlString(newUserData.getLogin()),//0
+                sqlString(newUserData.getPassword()),//1
+                sqlString(newUserData.getEmail()),//2
+                sqlString(newUserData.getName()),//3
+                sqlString(newUserData.getSurname()),//4
+                sqlString(newUserData.getPermission()),//5
                 userId.toString()
                 );
         try{
@@ -62,7 +71,7 @@ public class DatabaseDAO {
     }
 
     public boolean deleteUser(Long userId) {
-        String query = String.format("DELETE FROM users WHERE id={0};",
+        String query = MessageFormat.format("DELETE FROM users WHERE id={0};",
                 userId.toString()
         );
         try{
@@ -75,7 +84,7 @@ public class DatabaseDAO {
     }
 
     public User getUser(Long userId) {
-        String query = String.format("SELECT * FROM users WHERE id={0};",
+        String query = MessageFormat.format("SELECT * FROM users WHERE id={0};",
                 userId.toString()
         );
         try{
@@ -96,9 +105,9 @@ public class DatabaseDAO {
     }
 
     public boolean resetPassword(Long userId, String newPassword) {
-        String query = String.format("UPDATE users password='{1}' WHERE id={0};",
+        String query = MessageFormat.format("UPDATE users password={1} WHERE id={0};",
                 userId.toString(),
-                newPassword
+                sqlString(newPassword)
         );
         try{
             return  MySqlConnection().prepareStatement(query).execute();
@@ -110,10 +119,10 @@ public class DatabaseDAO {
     }
 
     public boolean addEvent(Event event) {
-        String query = String.format("INSERT INTO events (name,agenda,date,organizer) VALUES({0},{1},{2},{3},{4})",
-                event.getName(),
-                event.getAgenda(),
-                event.getDate().toString(),
+        String query = MessageFormat.format("INSERT INTO events (name,agenda,date,organizer) VALUES({0},{1},{2},{3},{4})",
+                sqlString(event.getName()),
+                sqlString(event.getAgenda()),
+                sqlString(event.getDate().toString()),
                 event.getOrganizer().getId()
         );
         try {
@@ -126,11 +135,11 @@ public class DatabaseDAO {
     }
 
     public boolean modifyEvent(Long eventId, Event newEventData) {
-        String query = String.format("UPDATE events SET name='{1}',agenda='{2}',date='{3}',organizer='{4}' WHERE id={0};",
+        String query = MessageFormat.format("UPDATE events SET name={1},agenda={2},date={3},organizer={4} WHERE id={0};",
                 eventId.toString(),
-                newEventData.getName(),
-                newEventData.getAgenda(),
-                newEventData.getDate(),
+                sqlString(newEventData.getName()),
+                sqlString(newEventData.getAgenda()),
+                sqlString(newEventData.getDate().toString()),
                 newEventData.getOrganizer().getId()
         );
         try{
@@ -143,7 +152,7 @@ public class DatabaseDAO {
     }
 
     public boolean deleteEvent(Long eventId) {
-        String query = String.format("DELETE FROM events WHERE id={0};",
+        String query = MessageFormat.format("DELETE FROM events WHERE id={0};",
                 eventId.toString()
         );
         try{
@@ -156,7 +165,7 @@ public class DatabaseDAO {
     }
 
     public Event getEvent(Long eventId) {
-        String query = String.format("SELECT * FROM events"
+        String query = MessageFormat.format("SELECT * FROM events"
                         +"WHERE id={0};",
                 eventId.toString()
         );
@@ -185,11 +194,11 @@ public class DatabaseDAO {
     }
 
     public boolean addUserOnEvent(UserOnEvent userOnEvent) {
-        String query = String.format("INSERT INTO uoe (event,user,foodType,confirmed) VALUES({0},{1},{2},{3})",
+        String query = MessageFormat.format("INSERT INTO uoe (event,user,foodType,confirmed) VALUES({0},{1},{2},{3})",
                 userOnEvent.getEvent().getId(),
                 userOnEvent.getUser().getId(),
                 userOnEvent.getFoodType().getId(),
-                "false"
+                "0"
         );
         try {
             return MySqlConnection().prepareStatement(query).execute();
@@ -202,7 +211,7 @@ public class DatabaseDAO {
     }
 
     public boolean modifyUserOnEvent(Long uoeId, UserOnEvent newUoeData) {
-        String query = String.format("UPDATE ueo SET event='{1}',user='{2}',foodType='{3}',confirmed='{4}' WHERE id={0};",
+        String query = MessageFormat.format("UPDATE ueo SET event={1},user={2},foodType={3},confirmed={4} WHERE id={0};",
                 uoeId,
                 newUoeData.getEvent().getId(),
                 newUoeData.getUser().getId(),
@@ -219,7 +228,7 @@ public class DatabaseDAO {
     }
 
     public boolean deleteUserOnEvent(Long uoeId) {
-        String query = String.format("DELETE FROM uoe WHERE id={0};",
+        String query = MessageFormat.format("DELETE FROM uoe WHERE id={0};",
                 uoeId.toString()
         );
         try{
@@ -232,7 +241,7 @@ public class DatabaseDAO {
     }
 
     public UserOnEvent getUserOnEvent(Long uoeId) {
-        String query = String.format("SELECT * FROM uoe WHERE id={0};",
+        String query = MessageFormat.format("SELECT * FROM uoe WHERE id={0};",
                 uoeId.toString()
         );
         try{
@@ -243,6 +252,7 @@ public class DatabaseDAO {
             uoe.setFoodType(getFoodType(set.getLong("id")));
             uoe.setEvent(getEvent(set.getLong("event")));
             uoe.setId(set.getLong("id"));
+            uoe.setRole(set.getString("role"));
             return uoe;
 
         }
@@ -264,11 +274,12 @@ public class DatabaseDAO {
         uoe.setFoodType(new FoodType(""));
         uoe.setConfirmed(false);
         uoe.setUser(new User("getUoe"));
+        uoe.setRole("NONE");
         return uoe;
     }
 
     public boolean accept(Long uoeId) {
-        String query = String.format("UPDATE ueo SET confirmed=true WHERE id={0};",
+        String query = MessageFormat.format("UPDATE ueo SET confirmed=1 WHERE id={0};",
                 uoeId
         );
         try{
@@ -281,7 +292,7 @@ public class DatabaseDAO {
     }
 
     public boolean discard(Long uoeId) {
-        String query = String.format("UPDATE ueo SET confirmed=false WHERE id={0};",
+        String query = MessageFormat.format("UPDATE ueo SET confirmed=0 WHERE id={0};",
                 uoeId
         );
         try{
@@ -310,7 +321,7 @@ public class DatabaseDAO {
     }
 
     public FoodType getFoodType(Long id){
-        String query = String.format("SELECT * FROM ft WHERE id={0};", id);
+        String query = MessageFormat.format("SELECT * FROM ft WHERE id={0};", id);
         try{
             ResultSet set = MySqlConnection().prepareStatement(query).executeQuery();
             return new FoodType(
