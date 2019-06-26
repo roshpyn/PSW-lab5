@@ -1,12 +1,16 @@
 package main.Controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.CheckBox;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import main.DAO.DatabaseDAO;
 import main.models.User;
 
+import javax.jws.soap.SOAPBinding;
 import javax.security.auth.login.Configuration;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +20,8 @@ import java.util.regex.Pattern;
 
 public class Controller {
     DatabaseDAO dao = new DatabaseDAO();
+    private User loggedUser = null;
+    private byte failedLoginCount = 0;
 
     User user  = new User();
     @FXML private TextField registerTextFieldName;
@@ -59,8 +65,14 @@ public class Controller {
 
     }
     @FXML void registerCheckAvailability(){
-        //TODO
-        registerTextFieldLogin.setStyle("-fx-background-color: rgba(255,0,0,0.5); -fx-border-color: rgba(255,0,0,0.75);");//error
+        String login = registerTextFieldLogin.getText();
+
+        User user = dao.getUserByLogin(login);
+        if (user.getLogin().equals(login) ) {
+            registerTextFieldLogin.setStyle("-fx-background-color: rgba(255,0,0,0.5); -fx-border-color: rgba(255,0,0,0.75);");//error
+            return;
+        }
+
         registerTextFieldLogin.setStyle("-fx-background-color: rgba(0,255,0,0.5); -fx-border-color: rgba(0,255,0,0.75);");
     }
 
@@ -108,13 +120,20 @@ public class Controller {
         System.out.println("LOG: "+name+surname+email+login+password);
 
 
-        //TODO
+
         user.setName(name);
         user.setSurname(surname);
         user.setEmail(email);
         user.setLogin(login);
         user.setPassword(password);
         user.setPermission("USER");
+
+        registerCheckAvailability();
+        User userFromDB = dao.getUserByLogin(login);
+        if (userFromDB == null) return;
+        if (userFromDB.getLogin().equals(login)) return;
+
+
 
         dao.addUser(user);
 
@@ -147,6 +166,47 @@ public class Controller {
         } finally {
             return isSuccessful;
         }
+    }
+
+
+    @FXML private TextField login_login;
+    @FXML private TextField login_password;
+    @FXML private Button login_button;
+    @FXML private void login(){
+        if (failedLoginCount>=2){
+            login_login.setDisable(true);
+            login_password.setDisable(true);
+            login_button.setDisable(true);
+            loggedUser = null;
+            return;
+        }
+
+        String inputLogin = login_login.getText();
+        String inputPassword= login_password.getText();
+        if (inputLogin.length()<1){
+            login_login.setStyle("-fx-background-color: rgba(255,0,0,0.5); -fx-border-color: rgba(255,0,0,0.75);");
+            failedLoginCount++;1
+            return;
+        }
+
+        User user = dao.getUserByLogin(inputLogin);
+        if(user.getId().equals(0L)){
+            login_login.setStyle("-fx-background-color: rgba(255,0,0,0.5); -fx-border-color: rgba(255,0,0,0.75);");
+            failedLoginCount++;
+            return;
+        }
+
+        login_login.setStyle("-fx-background-color: rgba(0,255,0,0.5); -fx-border-color: rgba(0,255,0,0.75);");
+
+        if(!user.getPassword().equals(inputPassword)){
+            login_password.setStyle("-fx-background-color: rgba(255,0,0,0.5); -fx-border-color: rgba(255,0,0,0.75);");
+            failedLoginCount++;
+            return;
+        }
+
+        loggedUser = user;
+
+
     }
 
 }

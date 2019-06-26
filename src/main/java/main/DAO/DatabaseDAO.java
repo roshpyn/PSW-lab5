@@ -17,7 +17,7 @@ public class DatabaseDAO {
     public Connection MySqlConnection() {
         Connection MySqlConn = null;
         try {
-            MySqlConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/psw" +
+            MySqlConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/psw_lab5" +
                           "?useUnicode=true" +
                           "&useJDBCCompliantTimezoneShift=true" +
                           "&useLegacyDatetimeCode=false" +
@@ -102,6 +102,30 @@ public class DatabaseDAO {
             System.out.println(e.toString());
         }
         return new User("getUser");
+    }
+    public User getUserByLogin(String login) {
+        String query = MessageFormat.format("SELECT id,login,password,email,name,surname,permission FROM users WHERE login={0};",
+                sqlString(login)
+        );
+        try{
+            ResultSet set;
+            set = MySqlConnection().prepareStatement(query).executeQuery();
+            if (set.next()){
+            return new User(set.getLong("id"),
+                    set.getString("login"),
+                    set.getString("password"),
+                    set.getString("email"),
+                    set.getString("name"),
+                    set.getString("surname"),
+                    set.getString("permission")
+
+            );
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return new User("");
     }
 
     public boolean resetPassword(Long userId, String newPassword) {
