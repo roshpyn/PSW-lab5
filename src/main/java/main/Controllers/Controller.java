@@ -185,7 +185,7 @@ public class Controller {
         String inputPassword= login_password.getText();
         if (inputLogin.length()<1){
             login_login.setStyle("-fx-background-color: rgba(255,0,0,0.5); -fx-border-color: rgba(255,0,0,0.75);");
-            failedLoginCount++;1
+            failedLoginCount++;
             return;
         }
 
